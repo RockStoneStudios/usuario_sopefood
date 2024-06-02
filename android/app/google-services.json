@@ -1,0 +1,155 @@
+{
+  "project_info": {
+    "project_number": "936460764842",
+    "firebase_url": "https://delivery-sopetran-default-rtdb.firebaseio.com",
+    "project_id": "delivery-sopetran",
+    "storage_bucket": "delivery-sopetran.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936460764842:android:7514cb77505f8604eeb2d3",
+        "android_client_info": {
+          "package_name": "com.rockstone.sopefoodadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936460764842-jlsanaubij6snh5epous8u9bgtr0r8ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCle6Q0II3LrcxWzJAxKFKte53MpZdW_q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936460764842-jlsanaubij6snh5epous8u9bgtr0r8ai.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "936460764842-14g4aqco7evam5bgfaf0sng0pefn4j26.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.restaurantsSope"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936460764842:android:2f0dd7edf8c72f9feeb2d3",
+        "android_client_info": {
+          "package_name": "com.rockstone.sopefoodconductor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936460764842-jlsanaubij6snh5epous8u9bgtr0r8ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCle6Q0II3LrcxWzJAxKFKte53MpZdW_q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936460764842-jlsanaubij6snh5epous8u9bgtr0r8ai.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "936460764842-14g4aqco7evam5bgfaf0sng0pefn4j26.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.restaurantsSope"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936460764842:android:b20b8f669417a037eeb2d3",
+        "android_client_info": {
+          "package_name": "com.rockstone.sopefoodrestaurantes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936460764842-jlsanaubij6snh5epous8u9bgtr0r8ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCle6Q0II3LrcxWzJAxKFKte53MpZdW_q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936460764842-jlsanaubij6snh5epous8u9bgtr0r8ai.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "936460764842-14g4aqco7evam5bgfaf0sng0pefn4j26.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.restaurantsSope"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936460764842:android:cbe302eb29d502e0eeb2d3",
+        "android_client_info": {
+          "package_name": "com.rockstone.sopefoodusuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936460764842-jlsanaubij6snh5epous8u9bgtr0r8ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCle6Q0II3LrcxWzJAxKFKte53MpZdW_q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936460764842-jlsanaubij6snh5epous8u9bgtr0r8ai.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "936460764842-14g4aqco7evam5bgfaf0sng0pefn4j26.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.restaurantsSope"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
