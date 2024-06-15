@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         HomeHeading(
                           heading:
-                              "Explore ${categoryController.titleValue} Category",
+                              "Explore Categoria ${categoryController.titleValue} ",
                           restaurant: true,
                         ),
                         const CategoryFoodList(),

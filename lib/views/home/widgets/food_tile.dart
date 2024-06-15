@@ -41,8 +41,8 @@ class CategoryFoodTile extends StatelessWidget {
                     child: Stack(
                       children: [
                         SizedBox(
-                            height: 75.h,
-                            width: 80.h,
+                            height: 78.h,
+                            width: 82.h,
                             child: Image.network(
                               food.imageUrl[0],
                               fit: BoxFit.cover,
@@ -81,10 +81,10 @@ class CategoryFoodTile extends StatelessWidget {
                       ),
                       ReusableText(
                           text: food.title,
-                          style: appStyle(11, kDark, FontWeight.w400)),
+                          style: appStyle(14, kDark, FontWeight.w700)),
                       ReusableText(
                           text: "Tiempo Domicilio ${food.time}",
-                          style: appStyle(9, kGray, FontWeight.w400)),
+                          style: appStyle(10, kGray, FontWeight.w500)),
                       const SizedBox(
                         height: 5,
                       ),
@@ -108,7 +108,7 @@ class CategoryFoodTile extends StatelessWidget {
                                     child: ReusableText(
                                         text: addittives.title,
                                         style: appStyle(
-                                            8, kGray, FontWeight.w400)),
+                                            10, kGray, FontWeight.w500)),
                                   ),
                                 ),
                               );
@@ -125,7 +125,7 @@ class CategoryFoodTile extends StatelessWidget {
             top: 6.h,
             child: Container(
               width: 60.h,
-              height: 19.h,
+              height: 20.h,
               decoration: const BoxDecoration(
                   color: kPrimary,
                   borderRadius: BorderRadius.all(
@@ -133,8 +133,8 @@ class CategoryFoodTile extends StatelessWidget {
                   )),
               child: Center(
                 child: ReusableText(
-                  text: "\$ ${food.price.toString()}",
-                  style: appStyle(12, kLightWhite, FontWeight.bold),
+                  text: "\$ ${food.price.toStringAsFixed(0)}",
+                  style: appStyle(13, kLightWhite, FontWeight.bold),
                 ),
               ),
             ),

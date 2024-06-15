@@ -61,7 +61,7 @@ class _FoodPageState extends State<FoodPage> {
     final cartController = Get.put(CartController());
 
     foodController.loadAdditives(widget.food.additives);
-    print('++++++++++++++++++++++++++++++++++++++++++++++');
+
     final hookResult = useFetchRestaurant(widget.food.restaurant);
     final restaurantData = hookResult.data;
     print(widget.food.restaurant);
@@ -295,9 +295,9 @@ class _FoodPageState extends State<FoodPage> {
                       Row(
                         children: [
                           GestureDetector(
-                              onTap: counterController.increment,
+                              onTap: counterController.decrement,
                               child: const Icon(
-                                AntDesign.plussquareo,
+                                AntDesign.minussquareo,
                                 color: kPrimary,
                               )),
                           SizedBox(
@@ -308,16 +308,16 @@ class _FoodPageState extends State<FoodPage> {
                               padding: const EdgeInsets.only(top: 4.0),
                               child: ReusableText(
                                   text: "${counterController.count}",
-                                  style: appStyle(16, kDark, FontWeight.w500)),
+                                  style: appStyle(16, kDark, FontWeight.w600)),
                             ),
                           ),
                           SizedBox(
                             width: 6.w,
                           ),
                           GestureDetector(
-                              onTap: counterController.decrement,
+                              onTap: counterController.increment,
                               child: const Icon(
-                                AntDesign.minussquareo,
+                                AntDesign.plussquareo,
                                 color: kPrimary,
                               ))
                         ],

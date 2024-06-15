@@ -13,7 +13,7 @@ Future<dynamic> customerService(BuildContext context, String service) {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text('Close'),
+          child: const Text('Cerrar'),
         ),
       ],
       title: Center(
