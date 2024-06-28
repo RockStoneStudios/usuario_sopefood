@@ -14,6 +14,8 @@ import 'package:sopefoodusuario/views/entrypoint.dart';
 import 'package:sopefoodusuario/views/orders/order_details_page.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:sopefoodusuario/dialogs/location_permission_dialog.dart';
 
 Future<dynamic> myBackgroundMessageHandler(RemoteMessage message) async {
   print(
@@ -21,7 +23,7 @@ Future<dynamic> myBackgroundMessageHandler(RemoteMessage message) async {
 }
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+FlutterLocalNotificationsPlugin();
 
 Widget defaultHome = MainScreen();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -68,7 +70,23 @@ class MyApp extends StatelessWidget {
               iconTheme: IconThemeData(color: Color(kDark.value)),
               primarySwatch: Colors.grey,
             ),
-            home: defaultHome,
+            home: FutureBuilder<PermissionStatus>(
+              future: Permission.locationWhenInUse.status,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const SizedBox();
+                } else if (snapshot.hasData) {
+                  final permissionStatus = snapshot.data!;
+                  if (permissionStatus.isDenied) {
+                    return LocationPermissionDialog(defaultHome: defaultHome);
+                  } else {
+                    return defaultHome;
+                  }
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
             navigatorKey: navigatorKey,
             routes: {
               '/order_details_page': (context) => const OrderDetailsPage(),

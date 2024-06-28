@@ -120,8 +120,20 @@ class _AddAddressState extends State<AddAddress> {
       _selectedLocation = newPosition;
     });
 
+    await _reverseGeocodeLocation(newPosition);
+  }
+
+  void _onMapTap(LatLng position) async {
+    setState(() {
+      _selectedLocation = position;
+    });
+
+    await _reverseGeocodeLocation(position);
+  }
+
+  Future<void> _reverseGeocodeLocation(LatLng position) async {
     final reverseGeocodeUrl = Uri.parse(
-        'https://maps.googleapis.com/maps/api/geocode/json?latlng=${newPosition.latitude},${newPosition.longitude}&key=${Environment.googleApiKey2}');
+        'https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.latitude},${position.longitude}&key=${Environment.googleApiKey2}');
 
     final response = await http.get(reverseGeocodeUrl);
 
@@ -134,7 +146,7 @@ class _AddAddressState extends State<AddAddress> {
       // Extracting the postal code
       String postalCode = "";
       final addressComponents =
-          responseBody['results'][0]['address_components'];
+      responseBody['results'][0]['address_components'];
       for (var component in addressComponents) {
         if (component['types'].contains('postal_code')) {
           postalCode = component['long_name'];
@@ -170,46 +182,46 @@ class _AddAddressState extends State<AddAddress> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: Obx(
-          () => Padding(
+              () => Padding(
             padding: EdgeInsets.only(right: 0.w),
             child: controller.currentIndex == 0
                 ? IconButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: const Icon(AntDesign.closecircleo))
+                onPressed: () {
+                  Get.back();
+                },
+                icon: const Icon(AntDesign.closecircleo))
                 : IconButton(
-                    onPressed: () {
-                      controller.currentIndex = 0;
-                      _pageController.previousPage(
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.ease);
-                    },
-                    icon: const Icon(
-                      AntDesign.leftcircleo,
-                      color: kDark,
-                    ),
-                  ),
+              onPressed: () {
+                controller.currentIndex = 0;
+                _pageController.previousPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease);
+              },
+              icon: const Icon(
+                AntDesign.leftcircleo,
+                color: kDark,
+              ),
+            ),
           ),
         ),
         actions: [
           Obx(() => Padding(
-                padding: EdgeInsets.only(right: 0.w, top: 6.h),
-                child: controller.currentIndex == 1
-                    ? const SizedBox.shrink()
-                    : IconButton(
-                        onPressed: () {
-                          controller.currentIndex = 1;
-                          _pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease);
-                        },
-                        icon: const Icon(
-                          AntDesign.rightcircleo,
-                          color: kDark,
-                        ),
-                      ),
-              ))
+            padding: EdgeInsets.only(right: 0.w, top: 6.h),
+            child: controller.currentIndex == 1
+                ? const SizedBox.shrink()
+                : IconButton(
+              onPressed: () {
+                controller.currentIndex = 1;
+                _pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease);
+              },
+              icon: const Icon(
+                AntDesign.rightcircleo,
+                color: kDark,
+              ),
+            ),
+          ))
         ],
       ),
       body: SizedBox(
@@ -240,19 +252,20 @@ class _AddAddressState extends State<AddAddress> {
                       zoom: 15.0,
                     ),
                     markers: _selectedLocation == null
-                        // ignore: prefer_collection_literals
+                    // ignore: prefer_collection_literals
                         ? Set.of([])
-                        // ignore: prefer_collection_literals
+                    // ignore: prefer_collection_literals
                         : Set.of([
-                            Marker(
-                              markerId: const MarkerId('Tu Ubicacion'),
-                              position: _selectedLocation!,
-                              draggable: true,
-                              onDragEnd: (newPosition) {
-                                _onMarkerDragEnd(newPosition);
-                              },
-                            )
-                          ]),
+                      Marker(
+                        markerId: const MarkerId('Tu Ubicacion'),
+                        position: _selectedLocation!,
+                        draggable: true,
+                        onDragEnd: (newPosition) {
+                          _onMarkerDragEnd(newPosition);
+                        },
+                      )
+                    ]),
+                    onTap: _onMapTap,
                   ),
                   Column(
                     children: [
@@ -269,27 +282,27 @@ class _AddAddressState extends State<AddAddress> {
                       _placeList.isEmpty
                           ? const SizedBox.shrink()
                           : Expanded(
-                              child: ListView(
-                                children: List.generate(
-                                  _placeList.length,
-                                  (index) {
-                                    return Container(
-                                      color: Colors.white,
-                                      child: ListTile(
-                                        visualDensity: VisualDensity.compact,
-                                        title: Text(
-                                            _placeList[index]['description']),
-                                        onTap: () {
-                                          _getPlaceDetail(
-                                              _placeList[index]['place_id']);
-                                          _selectedPlace.add(_placeList[index]);
-                                        },
-                                      ),
-                                    );
+                        child: ListView(
+                          children: List.generate(
+                            _placeList.length,
+                                (index) {
+                              return Container(
+                                color: Colors.white,
+                                child: ListTile(
+                                  visualDensity: VisualDensity.compact,
+                                  title: Text(
+                                      _placeList[index]['description']),
+                                  onTap: () {
+                                    _getPlaceDetail(
+                                        _placeList[index]['place_id']);
+                                    _selectedPlace.add(_placeList[index]);
                                   },
                                 ),
-                              ),
-                            )
+                              );
+                            },
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ],
@@ -336,15 +349,15 @@ class _AddAddressState extends State<AddAddress> {
                         children: [
                           Text("Asignar esta Ubicacion por Defecto",
                               style:
-                                  appStyle(12, Colors.black, FontWeight.w500)),
+                              appStyle(12, Colors.black, FontWeight.w500)),
                           Obx(() => CupertinoSwitch(
-                                value: controller.defaultAddress,
-                                onChanged: (value) {
-                                  controller.defaultAddress = value;
-                                },
-                                thumbColor: kSecondary,
-                                activeColor: kPrimary,
-                              )),
+                            value: controller.defaultAddress,
+                            onChanged: (value) {
+                              controller.defaultAddress = value;
+                            },
+                            thumbColor: kSecondary,
+                            activeColor: kPrimary,
+                          )),
                         ]),
                   ),
                   SizedBox(
@@ -354,7 +367,8 @@ class _AddAddressState extends State<AddAddress> {
                     onTap: () {
                       if (_searchController.text.isNotEmpty &&
                           _postalCodeRes.text.isNotEmpty &&
-                          _instructions.text.isNotEmpty) {
+                          _instructions.text.isNotEmpty &&
+                          _selectedLocation != null) {
                         AddressRequest address = AddressRequest(
                             addressLine1: _searchController.text,
                             postalCode: _postalCodeRes.text,
@@ -404,36 +418,38 @@ class _buildtextfield extends StatelessWidget {
   final TextInputType? keyboard;
   final void Function(String)? onSubmitted;
   final bool? readOnly;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 20.0),
       child: TextField(
-          keyboardType: keyboard,
-          readOnly: readOnly ?? false,
-          decoration: InputDecoration(
-              hintText: hintText,
-              // contentPadding: EdgeInsets.only(left: 24),
-              errorBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: kRed, width: 0.5),
-              ),
-              focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: kPrimary, width: 0.5),
-              ),
-              focusedErrorBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: kRed, width: 0.5),
-              ),
-              disabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: kGray, width: 0.5),
-              ),
-              enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: kGray, width: 0.5),
-              ),
-              border: InputBorder.none),
-          controller: controller,
-          cursorHeight: 25,
-          style: appStyle(12, Colors.black, FontWeight.normal),
-          onSubmitted: onSubmitted),
+        keyboardType: keyboard,
+        readOnly: readOnly ?? false,
+        decoration: InputDecoration(
+          hintText: hintText,
+          errorBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kRed, width: 0.5),
+          ),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kPrimary, width: 0.5),
+          ),
+          focusedErrorBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kRed, width: 0.5),
+          ),
+          disabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kGray, width: 0.5),
+          ),
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kGray, width: 0.5),
+          ),
+          border: InputBorder.none,
+        ),
+        controller: controller,
+        cursorHeight: 25,
+        style: appStyle(12, Colors.black, FontWeight.normal),
+        onSubmitted: onSubmitted,
+      ),
     );
   }
 }

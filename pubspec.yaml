@@ -54,6 +54,7 @@ dependencies:
   device_info_plus: ^9.1.2
   flutter_dotenv: ^5.1.0
   cross_connectivity: ^3.2.0
+  permission_handler: ^11.3.1
 
 
 dev_dependencies:
@@ -72,6 +73,7 @@ flutter:
   assets:
     - assets/images/
     - assets/anime/
+    - assets/
     - assets/icons/
     - .env.development
     - .env.production

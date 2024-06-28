@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:sopefoodusuario/models/all_addresses.dart';
 import 'package:sopefoodusuario/models/environment.dart';
